@@ -166,15 +166,11 @@ function EnhancedTableToolbar() {
   );
 }
 export default function EnhancedTable( { nobelData, language }: Props) {
-  // Formating the nobelData happens here
+
+  // Selecting the right language
   const rows = useMemo(() => (
     nobelData.map((item) => ({
       ...item, category: item.category[language],
-      dateAwarded: item.dateAwarded ? 
-                   new Date(item.dateAwarded).toLocaleString('pl-PL', {year: 'numeric', day: 'numeric', month: 'numeric'}) : 
-                   'Unknown',
-      prizeAmount: item.prizeAmount.toLocaleString().replace(/,/g, ' ')
-       
     }))
   ),[nobelData,language])
 

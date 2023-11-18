@@ -23,10 +23,12 @@ const Table = () => {
               const prizesByYear = data.nobelPrizes.filter(
                 (prize: NobelData) => prize.awardYear === year
               ).map((prize: NobelData) => ({
-                dateAwarded: prize.dateAwarded,
+                dateAwarded: prize.dateAwarded ? 
+                             new Date(prize.dateAwarded).toLocaleString('pl-PL', {year: 'numeric', day: 'numeric', month: 'numeric'}) : 
+                             'Unknown',
                 awardYear: prize.awardYear,
                 category: prize.category,
-                prizeAmount: prize.prizeAmountAdjusted,
+                prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
               }));
               
               setNobelData(prizesByYear)

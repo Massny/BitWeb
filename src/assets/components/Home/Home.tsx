@@ -3,17 +3,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { NobelData } from "../Types/NobelTypes";
 
 
 // HOOKS
 import { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
 
-
-
-interface nobelPrizeEntry {
-    awardYear: string
-}
 
 const languages = ['en','no','se']
 
@@ -45,7 +41,7 @@ const Home = () => {
                 const data = await response.json();
                 const yearFetchedSet:Set<string> = new Set();
                 //   dane posortowane, bo taka struktura danych i jest sztywno
-                data.nobelPrizes.forEach((item:nobelPrizeEntry) => {
+                data.nobelPrizes.forEach((item:NobelData) => {
                     yearFetchedSet.add(item.awardYear)
                 })
                 setYearFetched(Array.from(yearFetchedSet))
@@ -83,7 +79,6 @@ const Home = () => {
                         overflowX: 'hidden',
                     }}
                 >
-
                     <Box>
                         <Paper elevation={3} sx={{
                             width: '80vw',
