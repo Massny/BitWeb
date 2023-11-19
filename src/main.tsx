@@ -4,7 +4,6 @@ import './index.css'
 import App from './App.tsx'
 import AppTheme from './theme/themeProvider.tsx'
 import { BrowserRouter } from 'react-router-dom'
-import { NobelDataContextProvider } from './assets/components/Context/NobelDataContextProvider.tsx'
 
 
 
@@ -13,11 +12,9 @@ import { NobelDataContextProvider } from './assets/components/Context/NobelDataC
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppTheme>
-      <NobelDataContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </NobelDataContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </AppTheme> 
   </React.StrictMode>,
 )

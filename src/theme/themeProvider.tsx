@@ -9,19 +9,19 @@ const paletteTheme = createTheme({
     palette: {
         mode: 'dark',
         text: {
-            primary: "#dcf2fe",
+            primary: "#ffffff",
         },
         background: {
-            default: "#232323",
-            paper: "#232323"
+            default: "#18191B",
+            paper: "#18191B"
         },
         primary: {
-            main: "#29b1e6",
-            contrastText: "#000000",
+            main: "#2B8CCD",
+            contrastText: "#ffffff",
         },
         secondary: {
-            main: "#02283b",
-            contrastText: "#dcf2fe",
+            main: "#202E36",
+            contrastText: "#ffffff",
         },
         // accent: {
         //     main: "#98dbff",

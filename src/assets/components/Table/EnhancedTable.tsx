@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,11 +13,11 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 
-import { NobelPrizeSubset } from '../Types/NobelTypes';
+import { Languages, NobelPrizeSubset } from '../Types/NobelTypes';
 
 interface Props{
     nobelData: NobelPrizeSubset[],
-    language: 'en'|'no'|'se'
+    language: Languages
 }
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -71,7 +71,7 @@ const headCells: readonly HeadCell[] = [
   {
     id: 'category',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'Category',
   },
   {
@@ -113,6 +113,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
+            sx={{fontWeight: 'bold'}}
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
@@ -123,7 +124,9 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
+
               {headCell.label}
+
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -137,9 +140,10 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   );
 }
 
+const nobelPrizeFlavour = {en: 'Nobel Prize', no: 'Nobelprisen', se: 'Nobelpriset'};
 
 
-function EnhancedTableToolbar() {
+function EnhancedTableToolbar({lang} : {lang: Languages}) {
 
   return (
     <Toolbar
@@ -150,11 +154,11 @@ function EnhancedTableToolbar() {
     >
         <Typography
           sx={{ flex: '1 1 100%' }}
-          variant="h6"
+          variant="h4"
           id="tableTitle"
-          component="div"
+          component="h2"
         >
-          Nobel Prizes
+          {nobelPrizeFlavour[lang]}
         </Typography>
         {/* <Tooltip title="Filter list">
           <IconButton>
@@ -170,9 +174,9 @@ export default function EnhancedTable( { nobelData, language }: Props) {
   // Selecting the right language
   const rows = useMemo(() => (
     nobelData.map((item) => ({
-      ...item, category: item.category[language],
-    }))
-  ),[nobelData,language])
+        ...item, category: item.category[language],
+      }))
+  ),[language,nobelData])
 
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof NobelPrizeSubset>('category');
@@ -209,13 +213,13 @@ export default function EnhancedTable( { nobelData, language }: Props) {
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage,
       ),
-    [order, orderBy, page, rowsPerPage],
+    [order, orderBy, page, rowsPerPage, language, nobelData],
   );
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar />
+      <Paper sx={{ width: '100%', mb: 2, border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`), borderRadius: '10px'}} elevation={3} >
+        <EnhancedTableToolbar lang={language} />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -231,12 +235,12 @@ export default function EnhancedTable( { nobelData, language }: Props) {
             <TableBody>
               {visibleRows.map((row, index) => {
                 return (
-                  <TableRow key={index}>
+                  <TableRow hover tabIndex={-1} key={index}>
                     <TableCell
                       component="th"
                       id={`${index}`}
                       scope="row"
-                      padding="none"
+                      // padding="none"
                     >
                       {row.category}
                     </TableCell>

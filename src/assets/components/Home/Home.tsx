@@ -1,24 +1,33 @@
-import { Paper, Box, Button, Typography, Stack } from "@mui/material";
+// COMPONENTS
+import { Paper, Box, Button, Typography, Stack, Container } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { NobelData } from "../Types/NobelTypes";
+
+// TYPES
+import { NobelData, LangOutletContext } from "../Types/NobelTypes";
 
 
-// HOOKS
+// TECHNICAL
 import { useState, useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useOutletContext} from 'react-router-dom'
 
-
-const languages = ['en','no','se']
+// FLAVOUR TEXTS
+const welcomeFlavour = {en: 'Welcome', no: 'Velkommen', se: 'Välkommen'} 
+const textFlavour = {en: 'Start searching for greatness by selecting a year below', 
+                     no: 'Begynn å søke etter storhet ved å velge et år nedenfor', 
+                     se: 'Börja söka efter storhet genom att välja ett år nedan'} 
+const searchFlavour = {en: 'Search', no: 'Søk', se: 'Sök'};
+const yearFlavour = {en: 'Year', no: 'År', se: 'År'};
+                     
 
 const Home = () => {
 
     // States 
     const [year, setYear] = useState('');
     const [yearFetched, setYearFetched] = useState<string[] | null>(null)
-    const [lang, setLang] = useState<string>('en');
+    const { lang } = useOutletContext<LangOutletContext>();
     const navigate = useNavigate();
 
     // Handlers
@@ -30,10 +39,7 @@ const Home = () => {
         navigate(`/nagrody/${lang}/${year}`)
     }
 
-    const handleChangeLang = () => {
-        setLang(languages[(languages.indexOf(lang)+1)%languages.length])
-    }
-
+    // UseEffects
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -56,45 +62,43 @@ const Home = () => {
 
     return (
         <>  
-            <Box>
-                <Button variant="text" sx={{
-                    position: "absolute",
-                    top: '0px',
-                    right: '0px',
-                    margin: '20px',
-                    aspectRatio: '1/1',
-                    zIndex: 3
-                }} onClick={handleChangeLang}>
-                    <Typography variant="h6">{lang}</Typography>
-                </Button>
-            </Box>
             <Box style={{ width: '100%' }}>
-                <Stack
-                    direction='column'
-                    spacing={2}
-                    sx={{
-                        justifyContent: "flex-start",
+                <Stack direction='column' spacing={2} sx={{
+                        justifyContent: "center",
                         alignItems: "center",
-                        position: 'relative',
                         overflowX: 'hidden',
+                        height: '100vh'
                     }}
                 >
-                    <Box>
+                    <Container maxWidth='sm'>
                         <Paper elevation={3} sx={{
-                            width: '80vw',
-                            height: '70vh',
+                            height: 'fit-content',
+                            borderRadius: '10px',
+                            border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
+                            padding: '2rem'
                         }}>
-                            <Stack direction='column' spacing={2}>
-                                <Typography >Welcome</Typography>
-                                <FormControl fullWidth>
-                                    {/* Zmienić nazwy id */}
-                                    <InputLabel id="demo-simple-select-label">Year</InputLabel>
+                            <Stack direction='column' sx={{height: '100%'}} spacing={8}>
+                                <Box>
+                                    <Typography gutterBottom variant="h3" component='h1' textAlign="center">
+                                        {welcomeFlavour[lang]}
+                                    </Typography>
+                                    <Typography variant="subtitle1" component='div' textAlign="center">
+                                        {textFlavour[lang]}
+                                    </Typography>
+                                </Box>
+                                
+                                <FormControl sx={{height: '100%'}}>
+                                    {/* Spacing on stack breaks select label */}
+                                    <Stack direction="column" sx={{alignItems: 'center', justifyContent: 'space-between', height: '100%'}}>
+                                    <InputLabel id="select-year">{yearFlavour[lang]}</InputLabel>
                                     <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
+                                        fullWidth
+                                        labelId="select-year"
+                                        id="select-year"
                                         value={year}
                                         label="Year"
                                         onChange={handleSelectChange}
+                                        sx={{marginBottom: "30px"}}
                                     >
                                         {
                                             yearFetched?.map((item,index) => (
@@ -104,13 +108,15 @@ const Home = () => {
 
                                     </Select>
 
-                                    <Button variant="contained" disabled={year === ''} onClick={handleSubmit}>
-                                        Wyszukaj
+                                    <Button fullWidth variant="contained" size="large" disabled={year === ''} onClick={handleSubmit}>
+                                        {searchFlavour[lang]}
                                     </Button>
+                                    </Stack>
+
                                 </FormControl>
                             </Stack>
                         </Paper>
-                    </Box>
+                    </Container>
                 </Stack>
             </Box>
         </>
