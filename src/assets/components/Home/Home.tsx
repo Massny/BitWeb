@@ -5,13 +5,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-// TYPES
-import { NobelData, LangOutletContext } from "../Types/NobelTypes";
-
-
 // TECHNICAL
 import { useState, useEffect } from "react";
 import {useNavigate, useOutletContext} from 'react-router-dom'
+
+// TYPES
+import { NobelData, LangOutletContext } from "../Types/NobelTypes";
 
 // FLAVOUR TEXTS
 const welcomeFlavour = {en: 'Welcome', no: 'Velkommen', se: 'Välkommen'} 
@@ -46,7 +45,7 @@ const Home = () => {
                 const response = await fetch('https://api.nobelprize.org/2.1/nobelPrizes');
                 const data = await response.json();
                 const yearFetchedSet:Set<string> = new Set();
-                //   dane posortowane, bo taka struktura danych i jest sztywno
+                // No need for additional sorting, because data already sorted after fetch
                 data.nobelPrizes.forEach((item:NobelData) => {
                     yearFetchedSet.add(item.awardYear)
                 })
@@ -63,21 +62,29 @@ const Home = () => {
     return (
         <>  
             <Box style={{ width: '100%' }}>
-                <Stack direction='column' spacing={2} sx={{
-                        justifyContent: "center",
-                        alignItems: "center",
-                        overflowX: 'hidden',
-                        height: '100vh'
-                    }}
+                <Stack 
+                 direction='column' 
+                 spacing={2} 
+                 sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    overflowX: 'hidden',
+                    height: '100vh'
+                 }}
                 >
                     <Container maxWidth='sm'>
-                        <Paper elevation={3} sx={{
+
+                        <Paper 
+                         elevation={3} 
+                         sx={{
                             height: 'fit-content',
                             borderRadius: '10px',
                             border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
                             padding: '2rem'
-                        }}>
+                         }}>
+
                             <Stack direction='column' sx={{height: '100%'}} spacing={8}>
+
                                 <Box>
                                     <Typography gutterBottom variant="h3" component='h1' textAlign="center">
                                         {welcomeFlavour[lang]}
@@ -88,17 +95,20 @@ const Home = () => {
                                 </Box>
                                 
                                 <FormControl sx={{height: '100%'}}>
+
                                     {/* Spacing on stack breaks select label */}
                                     <Stack direction="column" sx={{alignItems: 'center', justifyContent: 'space-between', height: '100%'}}>
+
                                     <InputLabel id="select-year">{yearFlavour[lang]}</InputLabel>
+
                                     <Select
-                                        fullWidth
-                                        labelId="select-year"
-                                        id="select-year"
-                                        value={year}
-                                        label="Year"
-                                        onChange={handleSelectChange}
-                                        sx={{marginBottom: "30px"}}
+                                     fullWidth
+                                     labelId="select-year"
+                                     id="select-year"
+                                     value={year}
+                                     label="Year"
+                                     onChange={handleSelectChange}
+                                     sx={{marginBottom: "30px"}}
                                     >
                                         {
                                             yearFetched?.map((item,index) => (
@@ -111,6 +121,7 @@ const Home = () => {
                                     <Button fullWidth variant="contained" size="large" disabled={year === ''} onClick={handleSubmit}>
                                         {searchFlavour[lang]}
                                     </Button>
+
                                     </Stack>
 
                                 </FormControl>

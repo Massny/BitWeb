@@ -5,7 +5,7 @@ interface childrenType {
 }
 
 // Create a palette first, only then create the theming for custom components
-const paletteTheme = createTheme({
+const theme = createTheme({
     palette: {
         mode: 'dark',
         text: {
@@ -29,33 +29,6 @@ const paletteTheme = createTheme({
         // },
     },
 });
-  
-
-
-  // Add new variants or edit existing ones below (mainly for typography)
-const theme = createTheme(paletteTheme as ThemeOptions, {
-  typography:{
-    paragraphGray:{
-      fontSize: 12,
-      color: paletteTheme.palette.grey[300]
-    },
-    paragraphError:{
-      fontSize: 12,
-      color: paletteTheme.palette.error.main,
-      fontWeight: '400'
-    }
-  },
-  components:{
-    MuiTypography:{
-      defaultProps:{
-        variantMapping:{
-          paragraphGray: 'p',
-          paragraphError: 'p'
-        }
-      }
-    }
-  }
-})
   
 // Wrapped around the the entirety of the app in app.tsx file
 const AppTheme = ( {children} : childrenType ) => {

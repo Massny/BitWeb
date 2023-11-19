@@ -1,6 +1,6 @@
 // COMPONENTS
 import EnhancedTable from './EnhancedTable';
-import { Box, Container, Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 
 // TECHNICAL
 import { useEffect, useState } from 'react';
@@ -34,14 +34,14 @@ const Table = () => {
         const data = await response.json();
 
         const prizesByYear = data.nobelPrizes.filter(
-          (prize: NobelData) => prize.awardYear === year
+          (prize: NobelData) => (prize.awardYear === year)
         ).map((prize: NobelData) => ({
-          dateAwarded: prize.dateAwarded ?
-            new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
-            'Unknown',
-          awardYear: prize.awardYear,
-          category: prize.category,
-          prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
+            dateAwarded: prize.dateAwarded ?
+              new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
+              'Unknown',
+            awardYear: prize.awardYear,
+            category: prize.category,
+            prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
         }));
 
         setNobelData(prizesByYear)
@@ -58,7 +58,7 @@ const Table = () => {
   return (
     <Stack direction='column' sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="lg">
-        {nobelData ? <EnhancedTable nobelData={nobelData} language={lang} /> : ''}
+        {nobelData ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
       </Container>
     </Stack>
 

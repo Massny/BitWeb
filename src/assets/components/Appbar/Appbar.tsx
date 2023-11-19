@@ -31,29 +31,33 @@ const Appbar = () => {
     return ( 
         <>
             <Box>
-                <Button variant="text" sx={{
+                <Button 
+                 variant="text" 
+                 sx={{
                     position: "absolute",
                     top: '0px',
                     right: '0px',
                     margin: '20px',
                     aspectRatio: '1/1',
                     zIndex: 3
-                }} onClick={handleChangeLang}>
+                 }} 
+                 onClick={handleChangeLang}
+                >
                     <Typography variant="h6">{lang}</Typography>
                 </Button>
                 
                 <Button 
-                    disabled={!location.pathname.includes('/nagrody')}
-                    variant="text" 
-                    onClick={handleGoBack} 
-                    sx={{
-                        position: "absolute",
-                        top: '0px',
-                        left: '0px',
-                        margin: '20px',
-                        aspectRatio: '1/1',
-                        zIndex: 3
-                    }}
+                 disabled={!location.pathname.includes('/nagrody')}
+                 variant="text" 
+                 onClick={handleGoBack} 
+                 sx={{
+                    position: "absolute",
+                    top: '0px',
+                    left: '0px',
+                    margin: '20px',
+                    aspectRatio: '1/1',
+                    zIndex: 3
+                 }}
                 >
                     <ArrowBackIcon fontSize='large'/>
                 </Button>    
