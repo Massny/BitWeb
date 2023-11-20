@@ -1,8 +1,9 @@
+// COMPONENTS
 import { Typography, Stack } from "@mui/material";
 
 const PageNotFound = () => {
     return ( 
-        <div style={{overflowY: 'hidden', height:'100%'}}>
+        <div style={{ height:'100%' }}>
             <Stack sx={{
                 alignItems: 'center',
                 justifyContent: 'center',

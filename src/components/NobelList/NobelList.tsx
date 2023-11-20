@@ -1,6 +1,7 @@
 // COMPONENTS
 import EnhancedTable from './EnhancedTable';
 import { Container, Stack } from '@mui/material';
+import AnimateWrapper from '../Animation/AnimateWrapper';
 
 // TECHNICAL
 import { useEffect, useState } from 'react';
@@ -58,7 +59,10 @@ const Table = () => {
   return (
     <Stack direction='column' sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="lg">
-        {nobelData ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
+        <AnimateWrapper direction='left'>
+            {nobelData ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
+        </AnimateWrapper>
+        
       </Container>
     </Stack>
 

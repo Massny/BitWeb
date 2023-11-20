@@ -30,7 +30,6 @@ const theme = createTheme({
     },
 });
   
-// Wrapped around the the entirety of the app in app.tsx file
 const AppTheme = ( {children} : childrenType ) => {
     return ( 
         <>

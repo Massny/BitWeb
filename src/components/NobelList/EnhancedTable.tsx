@@ -140,7 +140,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   );
 }
 
-const nobelPrizeFlavour = {en: 'Nobel Prize', no: 'Nobelprisen', se: 'Nobelpriset'};
+const nobelPrizeFlavour = {en: 'Nobel Prizes', no: 'Nobelprisen', se: 'Nobelpriset'};
 
 
 function EnhancedTableToolbar({lang} : {lang: Languages}) {
