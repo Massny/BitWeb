@@ -1,4 +1,4 @@
-import { ThemeOptions, ThemeProvider, createTheme} from "@mui/material/styles";
+import { ThemeProvider, createTheme} from "@mui/material/styles";
 
 interface childrenType {
     children: JSX.Element
@@ -23,19 +23,17 @@ const theme = createTheme({
             main: "#202E36",
             contrastText: "#ffffff",
         },
-        // accent: {
-        //     main: "#98dbff",
-        //     textContrast: "#000000",
-        // },
     },
+    typography:{
+        fontFamily: [
+            'Poppins',
+        ].join(',')
+    }
 });
   
 const AppTheme = ( {children} : childrenType ) => {
     return ( 
-        <>
             <ThemeProvider theme={theme}> {children} </ThemeProvider>
-        </>
-
      );
 }
  

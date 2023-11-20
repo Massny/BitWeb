@@ -8,21 +8,17 @@ function App() {
 
   return (
     <>
-    <Routes>
-      <Route element={<Appbar />}>
-        <Route path="/" element={<Home />}/>
-        <Route path="/nagrody"  >
-          <Route index element={<Navigate to="/"/>}/>
-          <Route path=":language/:year" element={<NobelList />}/>
-          <Route path=":language" element={<Navigate to="/"/>}/>
+      <Routes>
+        <Route element={<Appbar />}>
+          <Route path="/" element={<Home />}/>
+          <Route path="/nagrody"  >
+            <Route index element={<Navigate to="/"/>}/>
+            <Route path=":language/:year" element={<NobelList />}/>
+            <Route path=":language" element={<Navigate to="/"/>}/>
+          </Route>
+          <Route path='*' element={<PageNotFound />}/>
         </Route>
-        <Route path='*' element={<PageNotFound />}/>
-      </Route>
-      
-
-
-    </Routes>
-
+      </Routes>
     </>
   )
 }

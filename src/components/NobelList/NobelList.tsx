@@ -29,7 +29,7 @@ const Table = () => {
       return
     }
 
-    const updateNobelData = async (nobelData: NobelPrizeSubset[] | null, year: string) => {
+    const updateNobelData = async ( year: string) => {
       try {
         const response = await fetch('https://api.nobelprize.org/2.1/nobelPrizes');
         const data = await response.json();
@@ -38,8 +38,8 @@ const Table = () => {
           (prize: NobelData) => (prize.awardYear === year)
         ).map((prize: NobelData) => ({
             dateAwarded: prize.dateAwarded ?
-              new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
-              'Unknown',
+            new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) : 
+            'Unknown',
             awardYear: prize.awardYear,
             category: prize.category,
             prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
@@ -53,7 +53,7 @@ const Table = () => {
       }
     }
 
-    updateNobelData(nobelData, year)
+    updateNobelData(year)
   }, [])
 
   return (

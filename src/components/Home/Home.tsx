@@ -24,7 +24,7 @@ const yearFlavour = {en: 'Year', no: 'År', se: 'År'};
 
 const Home = () => {
 
-    // States 
+    // Hooks 
     const [year, setYear] = useState('');
     const [yearFetched, setYearFetched] = useState<string[] | null>(null)
     const { lang } = useOutletContext<LangOutletContext>();
@@ -83,7 +83,6 @@ const Home = () => {
                                 border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
                                 padding: '2rem'
                             }}>
-
                                 <Stack direction='column' sx={{height: '100%'}} spacing={8}>
 
                                     <Box>
@@ -96,36 +95,34 @@ const Home = () => {
                                     </Box>
                                     
                                     <FormControl sx={{height: '100%'}}>
-
                                         {/* Spacing on stack breaks select label */}
                                         <Stack direction="column" sx={{alignItems: 'center', justifyContent: 'space-between', height: '100%'}}>
 
-                                        <InputLabel id="select-year">{yearFlavour[lang]}</InputLabel>
+                                            <InputLabel id="select-year">{yearFlavour[lang]}</InputLabel>
 
-                                        <Select
-                                        fullWidth
-                                        labelId="select-year"
-                                        id="select-year"
-                                        value={year}
-                                        label="Year"
-                                        onChange={handleSelectChange}
-                                        sx={{marginBottom: "30px"}}
-                                        >
-                                            {
-                                                yearFetched?.map((item,index) => (
-                                                    <MenuItem key={index} value={item}><span>{item}</span></MenuItem>
-                                                ))
-                                            }
+                                            <Select
+                                            fullWidth
+                                            labelId="select-year"
+                                            id="select-year"
+                                            value={year}
+                                            label="Year"
+                                            onChange={handleSelectChange}
+                                            sx={{marginBottom: "30px"}}
+                                            >
+                                                {
+                                                    yearFetched?.map((item,index) => (
+                                                        <MenuItem key={index} value={item}><span>{item}</span></MenuItem>
+                                                    ))
+                                                }
 
-                                        </Select>
+                                            </Select>
 
-                                        <Button fullWidth variant="contained" size="large" disabled={year === ''} onClick={handleSubmit}>
-                                            {searchFlavour[lang]}
-                                        </Button>
-
+                                            <Button fullWidth variant="contained" size="large" disabled={year === ''} onClick={handleSubmit}>
+                                                {searchFlavour[lang]}
+                                            </Button>
                                         </Stack>
-
                                     </FormControl>
+                                    
                                 </Stack>
                             </Paper>
                         </AnimateWrapper>

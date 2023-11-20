@@ -153,7 +153,7 @@ function EnhancedTableToolbar({lang} : {lang: Languages}) {
       }}
     >
         <Typography
-          sx={{ flex: '1 1 100%' }}
+          sx={{ flex: '1 1 100%', fontWeight: "500", paddingY: '20px' }}
           variant="h4"
           id="tableTitle"
           component="h2"
