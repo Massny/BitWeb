@@ -68,7 +68,6 @@ const Table = () => {
           {nobelData && nobelData.length > 0 ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
           {nobelData?.length == 0 ? <NoDataFound lang={lang} year={year} /> : <div></div>}
         </AnimateWrapper>
-
       </Container>
     </Stack>
 

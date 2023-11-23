@@ -9,7 +9,6 @@ interface Props {
     year: string | undefined
 }
 
-
 // FLAVOUR TEXTS
 const sorryFlavour = {
     en: 'Sorry, nothing there.',
