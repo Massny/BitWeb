@@ -1,6 +1,6 @@
 import { ThemeProvider, createTheme} from "@mui/material/styles";
 
-interface childrenType {
+interface Props {
     children: JSX.Element
 }
 
@@ -27,11 +27,12 @@ const theme = createTheme({
     typography:{
         fontFamily: [
             'Poppins',
+            'Roboto'
         ].join(',')
     }
 });
   
-const AppTheme = ( {children} : childrenType ) => {
+const AppTheme = ( {children} : Props ) => {
     return ( 
             <ThemeProvider theme={theme}> {children} </ThemeProvider>
      );

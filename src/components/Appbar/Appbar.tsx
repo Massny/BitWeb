@@ -3,7 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // TECHNICAL
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 // TYPES
@@ -20,13 +20,19 @@ const Appbar = () => {
     const navigate = useNavigate();
 
     // Handlers
-    const handleChangeLang = () => {
-        setLang(languages[(languages.indexOf(lang)+1)%languages.length])
+    const handleChangeLang = () => {  
+        setLang(languages[(languages.indexOf(lang)+1)%languages.length]) 
     }
 
     const handleGoBack = () => {
         navigate('/')
     }
+
+    useEffect(() => {
+        // Change the url to match the selected language whenever user changes it
+        history.pushState({}, '', location.pathname.replace(/\/nagrody\/([^\/]*)\//, `/nagrody/${lang}/`));  
+    }, [lang])
+    
 
     return ( 
         <>
@@ -47,7 +53,7 @@ const Appbar = () => {
                 </Button>
                 
                 <Button 
-                 disabled={!location.pathname.includes('/nagrody')}
+                 disabled={location.pathname === ("/")}
                  variant="text" 
                  onClick={handleGoBack} 
                  sx={{

@@ -8,19 +8,21 @@ import AnimateWrapper from "../Animation/AnimateWrapper";
 
 // TECHNICAL
 import { useState, useEffect } from "react";
-import {useNavigate, useOutletContext} from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 
 // TYPES
 import { NobelData, LangOutletContext } from "../Types/NobelTypes";
 
 // FLAVOUR TEXTS
-const welcomeFlavour = {en: 'Welcome', no: 'Velkommen', se: 'Välkommen'} 
-const textFlavour = {en: 'Start searching for greatness by selecting a year below', 
-                     no: 'Begynn å søke etter storhet ved å velge et år nedenfor', 
-                     se: 'Börja söka efter storhet genom att välja ett år nedan'} 
-const searchFlavour = {en: 'Search', no: 'Søk', se: 'Sök'};
-const yearFlavour = {en: 'Year', no: 'År', se: 'År'};
-                     
+const welcomeFlavour = { en: 'Welcome', no: 'Velkommen', se: 'Välkommen' }
+const textFlavour = {
+    en: 'Start searching for greatness by selecting a year below',
+    no: 'Begynn å søke etter storhet ved å velge et år nedenfor',
+    se: 'Börja söka efter storhet genom att välja ett år nedan'
+}
+const searchFlavour = { en: 'Search', no: 'Søk', se: 'Sök' };
+const yearFlavour = { en: 'Year', no: 'År', se: 'År' };
+
 
 const Home = () => {
 
@@ -45,9 +47,9 @@ const Home = () => {
             try {
                 const response = await fetch('https://api.nobelprize.org/2.1/nobelPrizes');
                 const data = await response.json();
-                const yearFetchedSet:Set<string> = new Set();
+                const yearFetchedSet: Set<string> = new Set();
                 // No need for additional sorting, because data already sorted after fetch
-                data.nobelPrizes.forEach((item:NobelData) => {
+                data.nobelPrizes.forEach((item: NobelData) => {
                     yearFetchedSet.add(item.awardYear)
                 })
                 setYearFetched(Array.from(yearFetchedSet))
@@ -56,34 +58,34 @@ const Home = () => {
                 console.error('Error fetching Years:', error);
             }
         };
-        
+
         fetchData();
     }, [])
 
     return (
-        <>  
+        <>
             <Box style={{ width: '100%' }}>
-                <Stack 
-                 direction='column' 
-                 spacing={2} 
-                 sx={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    overflowX: 'hidden',
-                    height: '100vh'
-                 }}
+                <Stack
+                    direction='column'
+                    spacing={2}
+                    sx={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        overflowX: 'hidden',
+                        height: '100vh'
+                    }}
                 >
                     <Container maxWidth='sm'>
                         <AnimateWrapper direction="right">
-                            <Paper 
-                            elevation={3} 
-                            sx={{
-                                height: 'fit-content',
-                                borderRadius: '10px',
-                                border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
-                                padding: '2rem'
-                            }}>
-                                <Stack direction='column' sx={{height: '100%'}} spacing={8}>
+                            <Paper
+                                elevation={3}
+                                sx={{
+                                    height: 'fit-content',
+                                    borderRadius: '10px',
+                                    border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
+                                    padding: '2rem'
+                                }}>
+                                <Stack direction='column' sx={{ height: '100%' }} spacing={8}>
 
                                     <Box>
                                         <Typography gutterBottom variant="h3" component='h1' textAlign="center">
@@ -93,24 +95,24 @@ const Home = () => {
                                             {textFlavour[lang]}
                                         </Typography>
                                     </Box>
-                                    
-                                    <FormControl sx={{height: '100%'}}>
+
+                                    <FormControl sx={{ height: '100%' }}>
                                         {/* Spacing on stack breaks select label */}
-                                        <Stack direction="column" sx={{alignItems: 'center', justifyContent: 'space-between', height: '100%'}}>
+                                        <Stack direction="column" sx={{ alignItems: 'center', justifyContent: 'space-between', height: '100%' }}>
 
                                             <InputLabel id="select-year">{yearFlavour[lang]}</InputLabel>
 
                                             <Select
-                                            fullWidth
-                                            labelId="select-year"
-                                            id="select-year"
-                                            value={year}
-                                            label="Year"
-                                            onChange={handleSelectChange}
-                                            sx={{marginBottom: "30px"}}
+                                                fullWidth
+                                                labelId="select-year"
+                                                id="select-year"
+                                                value={year}
+                                                label="Year"
+                                                onChange={handleSelectChange}
+                                                sx={{ marginBottom: "30px" }}
                                             >
                                                 {
-                                                    yearFetched?.map((item,index) => (
+                                                    yearFetched?.map((item, index) => (
                                                         <MenuItem key={index} value={item}><span>{item}</span></MenuItem>
                                                     ))
                                                 }
@@ -122,7 +124,7 @@ const Home = () => {
                                             </Button>
                                         </Stack>
                                     </FormControl>
-                                    
+
                                 </Stack>
                             </Paper>
                         </AnimateWrapper>
@@ -130,7 +132,7 @@ const Home = () => {
                 </Stack>
             </Box>
         </>
-        
+
     );
 }
 

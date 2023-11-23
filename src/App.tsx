@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route element={<Appbar />}>
           <Route path="/" element={<Home />}/>
-          <Route path="/nagrody"  >
+          <Route path="/nagrody">
             <Route index element={<Navigate to="/"/>}/>
             <Route path=":language/:year" element={<NobelList />}/>
             <Route path=":language" element={<Navigate to="/"/>}/>
