@@ -20,29 +20,29 @@ Przed rozpoczęciem instalacji upewnij się, że w twoim środowisku zainstalowa
 1. **Sklonuj repozytorium GitHub**  
 W wybranym przez siebie folderze otwórz terminal i użyj następującego polecenia:
 
-   ```bash
+   ```javascript
    git clone https://github.com/Massny/BitWeb.git
-    ```
+   ```
 
 2. **Przejdź do katalogu projektu:**  
 Używając terminala przejdź do nowo utworzonego katalogu:
 
-   ```bash
+   ```javascript
    cd BitWeb
-    ```
+   ```
 
 3. **Zainstaluj wymagane pakiety:**  
 Wykonaj poniższe polecenie, aby dokończyć instalację apliakcji:
 
-   ```bash
+   ```javascript
    npm install
-    ```
+   ```
   
 ## Uruchomienie aplikacji  
 
 Po instalacji możesz uruchomić aplikację lokalnie. Otwórz terminal w katalogu aplikacji i użyj następującego polecenia:
 
-   ```bash
+   ```javascript
    npm run dev 
    ```
 
