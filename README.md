@@ -7,15 +7,16 @@ Zadanie rekrutacyjne w ramach konkursu sekcji Bit WEB koła naukowego Bit.
 By Paweł Fornagiel     
 
 
-## Instrukcja Instalacji Aplikacji      
-
-# Prerequisites 
+## Prerequisites 
 Przed rozpoczęciem instalacji upewnij się, że w twoim środowisku zainstalowane są:     
 
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) (zawarte w Node.js)
+
    
 
+## Instrukcja Instalacji Aplikacji      
+    
 1. **Sklonuj repozytorium GitHub**  
 W wybranym przez siebie folderze otwórz terminal i użyj następującego polecenia:
 
