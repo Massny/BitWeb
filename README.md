@@ -1,8 +1,8 @@
 # BitNobel      
 
-Aplikacja webowa umożliwiająca wyświetlanie danych o nagrodach nobla przyznanych w danym roku, przy użyciu [Nobelprize.org API](https://www.nobelprize.org/about/developer-zone-2/).      
+Aplikacja webowa umożliwiająca wyświetlanie danych o nagrodach nobla przyznanych w danym roku, przy użyciu [Nobelprize.org API](https://www.nobelprize.org/about/developer-zone-2/). Strona dostępna jest w 3 językach oraz umożliwia sortowanie wyświetlanych danych.
 
-Zadanie rekrutacyjne w ramach konkursu sekcji Bit WEB koła naukowego Bit.      
+Zadanie rekrutacyjne w ramach konkursu sekcji Bit WEB koła naukowego Bit AGH.      
 
 By Paweł Fornagiel     
 
@@ -13,7 +13,6 @@ Przed rozpoczęciem instalacji upewnij się, że w twoim środowisku zainstalowa
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) (zawarte w Node.js)
 
-   
 
 ## Instrukcja Instalacji Aplikacji      
     
