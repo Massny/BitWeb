@@ -48,6 +48,25 @@ Po instalacji możesz uruchomić aplikację lokalnie. Otwórz terminal w katalog
 
 Po jego wykonaniu zostanie uruchomiony serwer deweloperski. Teraz wystarczy, że w przeglądarce odwiedzisz adres http://localhost:5173 i możesz cieszyć się działaniem BitNobla!  
 
+## Tworzenie builda
+
+Aby utworzyć zoptymalizowany build projektu, w katalogu BitWeb użyj polecnia:    
+
+   ```javascript
+   npm run build 
+   ```
+
+Build zostanie utworzony w katalogu 'dist' w folderze projektu. 
+
+Aby w prostu sposób uruchomić build na swoim komputerze, można użyć narzędzia [serve](https://www.npmjs.com/package/serve) przez wykonanie następujących poleceń w katalogu projektu:
+
+   ```javascript
+   npm install -g serve
+   serve -s dist
+   ```
+
+Aplikacja stanie się dostępna pod URL widocznym w terminalu.
+
 ## Trochę o mnie       
 
 Jestem pierwszoroczniakiem na kierunku Informatyka. Przed studiami miałem trochę doświadczenia z WebDevem - interesowałem się tematem, tworzyłem osobiste projekty wspólnie ze znajomymi oraz w ramach praktyk zawodowych. Mam doświadczenie w pracy z użyciem min. TypeScripta, Reacta, Pythona, Node.JS oraz baz danych SQL. Chciałbym spróbować swoich sił będąc częścią nieco większego niż dotychczas zespołu oraz przyczynić się do powstawania wspaniałego Enrolla 2.0. 
