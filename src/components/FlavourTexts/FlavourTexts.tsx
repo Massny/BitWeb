@@ -1,11 +1,9 @@
-// FLAVOUR TEXTS
-
 const HomeFlavour = {
     welcomeFlavour:  { en: 'Welcome', no: 'Velkommen', se: 'Välkommen' },
     textFlavour: {
-        en: 'Start searching for greatness by selecting a year below',
-        no: 'Begynn å søke etter storhet ved å velge et år nedenfor',
-        se: 'Börja söka efter storhet genom att välja ett år nedan'
+        en: 'Search for Nobel Prizes by selecting a year below',
+        no: 'Søk etter Nobelpriser ved å velge et år nedenfor',
+        se: 'Sök efter Nobelpriser genom att välja ett år nedan'
     },
     searchFlavour: { en: 'Search', no: 'Søk', se: 'Sök' },
     yearFlavour: { en: 'Year', no: 'År', se: 'År' },

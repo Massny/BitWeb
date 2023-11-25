@@ -11,7 +11,6 @@ interface Props {
 
 // FLAVOUR TEXTS
 import { NotFoundFlavour } from '../FlavourTexts/FlavourTexts';
-
 const { sorryFlavour, nothingFoundFlavour } = NotFoundFlavour
 
 const NoDataFound = ({ lang, year }: Props) => {

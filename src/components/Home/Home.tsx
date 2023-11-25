@@ -77,7 +77,7 @@ const Home = () => {
                                     height: 'fit-content',
                                     borderRadius: '10px',
                                     border: (theme) => (`solid 0.5px ${theme.palette.grey[800]}`),
-                                    padding: '2rem'
+                                    padding: '3rem'
                                 }}>
                                 <Stack direction='column' sx={{ height: '100%' }} spacing={8}>
 

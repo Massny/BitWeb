@@ -2,7 +2,6 @@
 import { Typography, Stack, Box } from "@mui/material";
 import AnimateWrapper from '../Animation/AnimationWrapper';
 
-
 const PageNotFound = () => {
     return ( 
         <Box sx={{width: '100%', overflow: 'hidden'}}>

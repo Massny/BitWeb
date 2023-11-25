@@ -25,7 +25,6 @@ const Table = () => {
     // Setting the language if user comes from "z palca"
     setLang(language === 'en' || language === 'no' || language === 'se' ? language : 'en')
 
-
     // Checking if year is provided, if not - back to the Home page
     if (!year) {
       navigate('/', { replace: true })
@@ -40,14 +39,16 @@ const Table = () => {
 
         const prizesByYear = data.nobelPrizes.filter(
           (prize: NobelData) => (prize.awardYear === year)
-        ).map((prize: NobelData) => ({
-          dateAwarded: prize.dateAwarded ?
-            new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
-            'Unknown',
-          awardYear: prize.awardYear,
-          category: prize.categoryFullName,
-          prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
-        }));
+        ).map(
+          (prize: NobelData) => ({
+            dateAwarded: prize.dateAwarded ?
+              new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
+              'Unknown',
+            awardYear: prize.awardYear,
+            category: prize.categoryFullName,
+            prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
+          })
+        );
 
         setNobelData(prizesByYear)
 
@@ -65,8 +66,8 @@ const Table = () => {
     <Stack direction='column' sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="lg">
         <AnimationWrapper direction='left'>
-          {nobelData && nobelData.length > 0 ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
-          {nobelData?.length == 0 ? <NoDataFound lang={lang} year={year} /> : <div></div>}
+          {nobelData && nobelData.length > 0 ? <EnhancedTable nobelData={nobelData} language={lang} /> : <span></span>}
+          {nobelData?.length == 0 ? <NoDataFound lang={lang} year={year} /> : <span></span>}
         </AnimationWrapper>
       </Container>
     </Stack>
