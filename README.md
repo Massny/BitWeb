@@ -69,4 +69,4 @@ Aplikacja stanie się dostępna pod URL widocznym w terminalu.
 
 ## Trochę o mnie       
 
-Jestem pierwszoroczniakiem na kierunku Informatyka. Przed studiami miałem trochę doświadczenia z WebDevem - interesowałem się tematem, tworzyłem osobiste projekty wspólnie ze znajomymi oraz w ramach praktyk zawodowych. Mam doświadczenie w pracy z użyciem min. TypeScripta, Reacta, Pythona, Node.JS oraz baz danych SQL. Chciałbym spróbować swoich sił będąc częścią nieco większego niż dotychczas zespołu oraz przyczynić się do powstawania wspaniałego Enrolla 2.0. 
+Jestem pierwszoroczniakiem na kierunku Informatyka. Przed studiami miałem trochę doświadczenia z WebDevem - interesowałem się tematem, tworzyłem osobiste projekty wspólnie ze znajomymi oraz w ramach praktyk zawodowych. Mam doświadczenie w pracy z użyciem min. TypeScripta, Reacta, Pythona, Node.JS oraz baz danych SQL. Chciałbym spróbować swoich sił będąc częścią nieco większego niż dotychczas zespołu oraz przyczynić się do powstawania wspaniałego Enrolla 2.0. Uważam, że moje umiejętności pozwolą mi na aktywny udział i efektywną pomoc w rozwoju całego projektu.
