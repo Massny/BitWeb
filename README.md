@@ -35,8 +35,8 @@ Wykonaj poniższe polecenie, aby dokończyć instalację apliakcji:
 Po instalacji możesz uruchomić aplikację lokalnie. Otwórz terminal w katalogu aplikacji i użyj następującego polecenia:
 
    ```bash
-   npm run dev
-    ```
+   npm run dev 
+   ```
 
 Po jego wykonaniu zostanie uruchomiony serwer deweloperski. Teraz wystarczy, że w przeglądarce odwiedzisz adres http://localhost:5173 i możesz cieszyć się działaniem BitNobla!
 
