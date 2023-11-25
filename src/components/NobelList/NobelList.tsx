@@ -1,7 +1,6 @@
 // COMPONENTS
 import EnhancedTable from './EnhancedTable';
 import { Container, Stack } from '@mui/material';
-import AnimateWrapper from '../Animation/AnimateWrapper';
 import NoDataFound from './NoDataFound';
 
 // TECHNICAL
@@ -10,6 +9,7 @@ import { useNavigate, useOutletContext, useParams } from 'react-router-dom'
 
 // TYPES
 import { LangOutletContext, NobelData, NobelPrizeSubset } from '../Types/NobelTypes';
+import AnimationWrapper from '../Animation/AnimationWrapper';
 
 const Table = () => {
 
@@ -45,7 +45,7 @@ const Table = () => {
             new Date(prize.dateAwarded).toLocaleString('pl-PL', { year: 'numeric', day: 'numeric', month: 'numeric' }) :
             'Unknown',
           awardYear: prize.awardYear,
-          category: prize.category,
+          category: prize.categoryFullName,
           prizeAmount: prize.prizeAmountAdjusted.toLocaleString().replace(/,/g, ' '),
         }));
 
@@ -64,10 +64,10 @@ const Table = () => {
   return (
     <Stack direction='column' sx={{ height: '100vh', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="lg">
-        <AnimateWrapper direction='left'>
+        <AnimationWrapper direction='left'>
           {nobelData && nobelData.length > 0 ? <EnhancedTable nobelData={nobelData} language={lang} /> : <div></div>}
           {nobelData?.length == 0 ? <NoDataFound lang={lang} year={year} /> : <div></div>}
-        </AnimateWrapper>
+        </AnimationWrapper>
       </Container>
     </Stack>
 

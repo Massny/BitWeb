@@ -10,18 +10,9 @@ interface Props {
 }
 
 // FLAVOUR TEXTS
-const sorryFlavour = {
-    en: 'Sorry, nothing there.',
-    no: 'Beklager, ingenting der.',
-    se: 'Tyvärr, inget där.'
-};
+import { NotFoundFlavour } from '../FlavourTexts/FlavourTexts';
 
-const nothingFoundFlavour = {
-    en: 'No Nobel Prizes found for the year ',
-    no: 'Ingen Nobelpriser funnet for året ',
-    se: 'Inga Nobelpris hittade för året '
-};
-
+const { sorryFlavour, nothingFoundFlavour } = NotFoundFlavour
 
 const NoDataFound = ({ lang, year }: Props) => {
 

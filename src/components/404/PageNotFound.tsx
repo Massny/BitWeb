@@ -1,6 +1,6 @@
 // COMPONENTS
 import { Typography, Stack, Box } from "@mui/material";
-import AnimateWrapper from '../Animation/AnimateWrapper';
+import AnimateWrapper from '../Animation/AnimationWrapper';
 
 
 const PageNotFound = () => {

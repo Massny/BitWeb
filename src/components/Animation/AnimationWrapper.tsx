@@ -13,7 +13,7 @@ interface Props{
     direction: 'left' | 'right'
 }
 
-const AnimateWrapper = ({children, direction}: Props) => {
+const AnimationWrapper = ({children, direction}: Props) => {
   return( 
             <Box sx={{opacity: 0, animation: `${direction == 'left' ? fadeInLeft : fadeInRight} 0.4s ease  forwards`}}>     
                 {children}
@@ -21,4 +21,4 @@ const AnimateWrapper = ({children, direction}: Props) => {
         )
 };
 
-export default AnimateWrapper;
+export default AnimationWrapper;

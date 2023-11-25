@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,11 +14,14 @@ import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 
 import { Languages, NobelPrizeSubset } from '../Types/NobelTypes';
+import { nobelTableFlavour } from '../FlavourTexts/FlavourTexts';
 
 interface Props{
     nobelData: NobelPrizeSubset[],
     language: Languages
 }
+
+const { nobelPrizeFlavour } = nobelTableFlavour
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -63,7 +66,11 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 interface HeadCell {
   disablePadding: boolean;
   id: keyof NobelPrizeSubset;
-  label: string;
+  label: {
+    en: string;
+    no: string;
+    se: string;
+  };
   numeric: boolean;
 }
 
@@ -72,36 +79,54 @@ const headCells: readonly HeadCell[] = [
     id: 'category',
     numeric: false,
     disablePadding: false,
-    label: 'Category',
+    label: {
+      en: 'Category',
+      no: 'Kategori',
+      se: 'Kategori'
+    }
   },
   {
     id: 'awardYear',
     numeric: true,
     disablePadding: false,
-    label: 'Year Awarded',
+    label: {
+      en: 'Year Awarded',
+      no: 'År tildelt',
+      se: 'År tilldelad'
+    },
   },
   {
     id: 'dateAwarded',
     numeric: true,
     disablePadding: false,
-    label: 'Date Awarded',
+    label: {
+      en: 'Date Awarded',
+      no: 'Dato tildelt',
+      se: 'Datum tilldelad'
+    },
   },
   {
     id: 'prizeAmount',
     numeric: true,
     disablePadding: false,
-    label: 'Prize Sum',
+    label: {
+      en: 'Prize Sum',
+      no: 'Premiesum',
+      se: 'Prissumma'
+    },
   }
 ];
+
 
 interface EnhancedTableProps {
   onRequestSort: (event: React.MouseEvent<unknown>, property: keyof NobelPrizeSubset) => void;
   order: Order;
   orderBy: string;
+  lang: Languages;
 }
 
 function EnhancedTableHead(props: EnhancedTableProps) {
-  const { order, orderBy, onRequestSort } =
+  const { order, lang, orderBy, onRequestSort } =
     props;
   const createSortHandler =
     (property: keyof NobelPrizeSubset) => (event: React.MouseEvent<unknown>) => {
@@ -125,7 +150,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               onClick={createSortHandler(headCell.id)}
             >
 
-              {headCell.label}
+              {headCell.label[lang]}
 
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
@@ -140,7 +165,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   );
 }
 
-const nobelPrizeFlavour = {en: 'Nobel Prizes', no: 'Nobelprisen', se: 'Nobelpriset'};
+
 
 
 function EnhancedTableToolbar({lang} : {lang: Languages}) {
@@ -230,6 +255,7 @@ export default function EnhancedTable( { nobelData, language }: Props) {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
+              lang={language}
 
             />
             <TableBody>

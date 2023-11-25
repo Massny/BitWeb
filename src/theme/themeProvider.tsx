@@ -4,7 +4,6 @@ interface Props {
     children: JSX.Element
 }
 
-// Create a palette first, only then create the theming for custom components
 const theme = createTheme({
     palette: {
         mode: 'dark',

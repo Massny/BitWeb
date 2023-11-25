@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import AnimateWrapper from "../Animation/AnimateWrapper";
+import AnimationWrapper from "../Animation/AnimationWrapper";
 
 // TECHNICAL
 import { useState, useEffect } from "react";
@@ -14,14 +14,8 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 import { NobelData, LangOutletContext } from "../Types/NobelTypes";
 
 // FLAVOUR TEXTS
-const welcomeFlavour = { en: 'Welcome', no: 'Velkommen', se: 'Välkommen' }
-const textFlavour = {
-    en: 'Start searching for greatness by selecting a year below',
-    no: 'Begynn å søke etter storhet ved å velge et år nedenfor',
-    se: 'Börja söka efter storhet genom att välja ett år nedan'
-}
-const searchFlavour = { en: 'Search', no: 'Søk', se: 'Sök' };
-const yearFlavour = { en: 'Year', no: 'År', se: 'År' };
+import { HomeFlavour } from "../FlavourTexts/FlavourTexts";
+const { welcomeFlavour, textFlavour, searchFlavour, yearFlavour  } = HomeFlavour
 
 
 const Home = () => {
@@ -76,7 +70,7 @@ const Home = () => {
                     }}
                 >
                     <Container maxWidth='sm'>
-                        <AnimateWrapper direction="right">
+                        <AnimationWrapper direction="right">
                             <Paper
                                 elevation={3}
                                 sx={{
@@ -127,7 +121,7 @@ const Home = () => {
 
                                 </Stack>
                             </Paper>
-                        </AnimateWrapper>
+                        </AnimationWrapper>
                     </Container>
                 </Stack>
             </Box>
