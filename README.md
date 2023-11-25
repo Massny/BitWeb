@@ -58,7 +58,7 @@ Aby utworzyć zoptymalizowany build projektu, w katalogu BitWeb użyj polecnia:
 
 Build zostanie utworzony w katalogu 'dist' w folderze projektu. 
 
-Aby w prostu sposób uruchomić build na swoim komputerze, można użyć narzędzia [serve](https://www.npmjs.com/package/serve) przez wykonanie następujących poleceń w katalogu projektu:
+Aby w prosty sposób uruchomić build na swoim komputerze, można użyć narzędzia [serve](https://www.npmjs.com/package/serve) przez wykonanie następujących poleceń w katalogu projektu:
 
    ```javascript
    npm install -g serve
